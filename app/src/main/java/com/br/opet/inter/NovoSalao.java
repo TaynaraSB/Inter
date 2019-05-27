@@ -2,23 +2,18 @@ package com.br.opet.inter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 public class NovoSalao extends AppCompatActivity {
@@ -28,6 +23,8 @@ public class NovoSalao extends AppCompatActivity {
     private FirebaseFirestore db;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private String userLogado = user.getEmail();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,13 +56,13 @@ public class NovoSalao extends AppCompatActivity {
 
         ObjSalao salao = new ObjSalao();
         salao.setUid(UUID.randomUUID().toString());
+        salao.setDono(userLogado);
         salao.setNome(editNome.getText().toString());
         salao.setRua(editRua.getText().toString());
         salao.setBairro(editBairro.getText().toString());
         salao.setNumero(editNumero.getText().toString());
         salao.setCidade(editCidade.getText().toString());
         referencia.child("Salao").child(salao.getUid()).setValue(salao);
-
 
     }
 

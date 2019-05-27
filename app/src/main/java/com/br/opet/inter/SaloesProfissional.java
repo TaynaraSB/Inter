@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +33,8 @@ public class SaloesProfissional extends AppCompatActivity {
 
     private List<ObjSalao> listSalao = new ArrayList<ObjSalao>();
     private ArrayAdapter<ObjSalao> arrayAdapterSalao;
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private String userLogado = user.getEmail();
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class SaloesProfissional extends AppCompatActivity {
         iniciarFirebase();
         eventoDatabase();
         listarSalao = findViewById(R.id.listSalao);
+
     }
 
     private void eventoDatabase() {
@@ -48,14 +52,14 @@ public class SaloesProfissional extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listSalao.clear();
-                for (DataSnapshot objSnapshot:dataSnapshot.getChildren()){
+                for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
                     ObjSalao s = objSnapshot.getValue(ObjSalao.class);
                     listSalao.add(s);
 
 
                 }
-            arrayAdapterSalao = new ArrayAdapter<ObjSalao>(SaloesProfissional.this,
-                    android.R.layout.simple_list_item_1,listSalao );
+                arrayAdapterSalao = new ArrayAdapter<ObjSalao>(SaloesProfissional.this,
+                        android.R.layout.simple_list_item_1, listSalao);
                 listarSalao.setAdapter(arrayAdapterSalao);
 
 

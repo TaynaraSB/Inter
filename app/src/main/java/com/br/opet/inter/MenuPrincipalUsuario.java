@@ -14,7 +14,6 @@ public class MenuPrincipalUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.saloesdisponivelusuario);
         inicializarComponentes();
-
         
     }
 
