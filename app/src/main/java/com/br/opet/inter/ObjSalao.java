@@ -4,19 +4,12 @@ import java.util.UUID;
 
 public class ObjSalao {
 
-    private String nome,rua,bairro,cidade,dono,numero,Uid;
+    private String nome,rua,bairro,cidade,numero,Uid;
 
     public ObjSalao() {
 
     }
 
-    public String getDono() {
-        return dono;
-    }
-
-    public void setDono(String dono) {
-        this.dono = dono;
-    }
 
     @Override
     public String toString() {

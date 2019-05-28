@@ -1,10 +1,13 @@
 package com.br.opet.inter;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -34,7 +37,7 @@ public class SaloesProfissional extends AppCompatActivity {
     private List<ObjSalao> listSalao = new ArrayList<ObjSalao>();
     private ArrayAdapter<ObjSalao> arrayAdapterSalao;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    private String userLogado = user.getEmail();
+    private String userLogado = user.getUid();
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +51,7 @@ public class SaloesProfissional extends AppCompatActivity {
     }
 
     private void eventoDatabase() {
-        referencia.child("Salao").addValueEventListener(new ValueEventListener() {
+        referencia.child(userLogado).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listSalao.clear();
@@ -81,4 +84,20 @@ public class SaloesProfissional extends AppCompatActivity {
     }
 
 
+    public void onItemClick(View view) {
+
+        listarSalao.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ObjSalao itemSelecionado = arrayAdapterSalao.getItem(position);
+
+                Intent i = new Intent(SaloesProfissional.this, SalaoSelecionado.class);
+                i.putExtra("Uid", itemSelecionado.toString());
+                startActivity(i);
+
+
+            }
+        });
+    }
 }
+
