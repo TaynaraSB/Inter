@@ -51,7 +51,7 @@ public class SaloesProfissional extends AppCompatActivity {
     }
 
     private void eventoDatabase() {
-        referencia.child(userLogado).addValueEventListener(new ValueEventListener() {
+        referencia.child("Salao").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listSalao.clear();
@@ -64,7 +64,6 @@ public class SaloesProfissional extends AppCompatActivity {
                 arrayAdapterSalao = new ArrayAdapter<ObjSalao>(SaloesProfissional.this,
                         android.R.layout.simple_list_item_1, listSalao);
                 listarSalao.setAdapter(arrayAdapterSalao);
-
 
             }
 

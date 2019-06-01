@@ -56,12 +56,13 @@ public class NovoSalao extends AppCompatActivity {
 
         ObjSalao salao = new ObjSalao();
         salao.setUid(UUID.randomUUID().toString());
+        salao.setSenhaChamada("0");
         salao.setNome(editNome.getText().toString());
         salao.setRua(editRua.getText().toString());
         salao.setBairro(editBairro.getText().toString());
         salao.setNumero(editNumero.getText().toString());
         salao.setCidade(editCidade.getText().toString());
-        referencia.child(userLogado).child(salao.getUid()).setValue(salao);
+        referencia.child("Salao").child(userLogado).child(salao.getUid()).setValue(salao);
 
     }
 
