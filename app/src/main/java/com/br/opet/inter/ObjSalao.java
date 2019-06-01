@@ -10,6 +10,8 @@ public class ObjSalao {
 
     }
 
+    
+
     public String getDono() {
         return dono;
     }
