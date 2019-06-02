@@ -1,15 +1,12 @@
 package com.br.opet.inter;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,58 +21,53 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class SaloesProfissional extends AppCompatActivity {
-
-
-    private FirebaseAuth auth;
-    private ListView listarSalao;
-    private FirebaseFirestore db;
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
+public class SalaoSelecionado extends AppCompatActivity {
 
     private List<ObjSalao> listSalao = new ArrayList<ObjSalao>();
     private ArrayAdapter<ObjSalao> arrayAdapterSalao;
+    private FirebaseAuth auth;
+    private TextView listarSalao,listarNumero;
+    private FirebaseFirestore db;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
+    private String salaoSelecionado;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private String userLogado = user.getUid();
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.saloesprofissional);
+        setContentView(R.layout.salaoselecionado);
         auth = FirebaseAuth.getInstance();
+        Intent iin = getIntent();
+        String nomeSalaoSelecionado = (String) iin.getSerializableExtra("Nome");
+        String chamadaSenha = (String) iin.getSerializableExtra("senhaChamada");
+
+        listarNumero = findViewById(R.id.listarNumero);
+        listarSalao = findViewById(R.id.nomeSalao);
+
+        TextView Uid = (TextView) findViewById(R.id.nomeSalao);
+        TextView senhaChamada = (TextView) findViewById(R.id.listarNumero);
+
+        Uid.setText(nomeSalaoSelecionado);
+        senhaChamada.setText(chamadaSenha);
         iniciarFirebase();
-        eventoDatabase();
-        listarSalao = findViewById(R.id.listSalao);
 
-        listarSalao.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ObjSalao itemSelecionado = arrayAdapterSalao.getItem(position);
-
-                Intent i = new Intent(SaloesProfissional.this, SalaoSelecionado.class);
-                i.putExtra("senhaChamada",itemSelecionado.getNumero().toString());
-                i.putExtra("Nome", itemSelecionado.toString());
-                startActivity(i);
-            }
-        });
-
+     /*    eventoDatabase(); */
     }
-
+    /*
     private void eventoDatabase() {
-        referencia.child("Salao").child(userLogado).addValueEventListener(new ValueEventListener() {
+        referencia.child("Salao").child(userLogado).child(salaoSelecionado).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listSalao.clear();
                 for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
                     ObjSalao s = objSnapshot.getValue(ObjSalao.class);
-                    listSalao.add(s);
 
+                    listSalao.add(s);
                 }
-                arrayAdapterSalao = new ArrayAdapter<ObjSalao>(SaloesProfissional.this,
+                arrayAdapterSalao = new ArrayAdapter<ObjSalao>(SalaoSelecionado.this,
                         android.R.layout.simple_list_item_1, listSalao);
                 listarSalao.setAdapter(arrayAdapterSalao);
-
             }
 
             @Override
@@ -83,16 +75,15 @@ public class SaloesProfissional extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
+
 
     private void iniciarFirebase() {
 
         db = FirebaseFirestore.getInstance();
-        FirebaseApp.initializeApp(SaloesProfissional.this);
+        FirebaseApp.initializeApp(SalaoSelecionado.this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         referencia = firebaseDatabase.getReference();
     }
 
-
 }
-

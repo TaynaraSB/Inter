@@ -24,7 +24,7 @@ public class NovoSalao extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    private String userLogado = user.getEmail();
+    private String userLogado = user.getUid();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,13 +56,13 @@ public class NovoSalao extends AppCompatActivity {
 
         ObjSalao salao = new ObjSalao();
         salao.setUid(UUID.randomUUID().toString());
-        salao.setDono(userLogado);
+        salao.setSenhaChamada("0");
         salao.setNome(editNome.getText().toString());
         salao.setRua(editRua.getText().toString());
         salao.setBairro(editBairro.getText().toString());
         salao.setNumero(editNumero.getText().toString());
         salao.setCidade(editCidade.getText().toString());
-        referencia.child("Salao").child(salao.getUid()).setValue(salao);
+        referencia.child("Salao").child(userLogado).child(salao.getUid()).setValue(salao);
 
     }
 

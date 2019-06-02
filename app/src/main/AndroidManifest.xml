@@ -17,7 +17,8 @@
         <activity android:name=".MenuPrincipalProfissional"></activity>
         <activity android:name=".CadastroProfissional"></activity>
         <activity android:name=".NovoSalao"></activity>
-        <activity android:name="SaloesProfissional"></activity>
+        <activity android:name=".SaloesProfissional"></activity>
+        <activity android:name=".SalaoSelecionado"></activity>
 
 
         <activity android:name=".ModoLogin">

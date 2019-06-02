@@ -4,20 +4,18 @@ import java.util.UUID;
 
 public class ObjSalao {
 
-    private String nome,rua,bairro,cidade,dono,numero,Uid;
+    private String nome,rua,bairro,cidade,numero,Uid,senhaChamada;
 
     public ObjSalao() {
 
     }
 
-    
-
-    public String getDono() {
-        return dono;
+    public String getSenhaChamada() {
+        return senhaChamada;
     }
 
-    public void setDono(String dono) {
-        this.dono = dono;
+    public void setSenhaChamada(String senhaChamada) {
+        this.senhaChamada = senhaChamada;
     }
 
     @Override
