@@ -8,29 +8,42 @@
     tools:context=".SalaoSelecionado">
 
 
-    <TextView
-        android:id="@+id/nomeSalao"
-        android:layout_width="278dp"
-        android:layout_height="91dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/nomeSalao"
+            android:layout_width="match_parent"
+            android:layout_height="112dp"></TextView>
 
-    <TextView
-        android:id="@+id/listarNumero"
-        android:layout_width="match_parent"
-        android:layout_height="112dp"></TextView>
+            <ListView
+            android:id="@+id/listarNumero"
+            android:layout_width="wrap_content"
+            android:layout_height="340dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnTeste"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        <Button
+            android:id="@+id/mais"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+" />
+
+        <Button
+            android:id="@+id/menos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="subSenha"
+            android:text="-" />
+
+        <Button
+            android:id="@+id/voltar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Voltar" />
 
 
 </LinearLayout>

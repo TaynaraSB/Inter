@@ -1,10 +1,14 @@
+
+
 package com.br.opet.inter;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,14 +27,17 @@ import java.util.List;
 
 public class SalaoSelecionado extends AppCompatActivity {
 
-    private List<ObjSalao> listSalao = new ArrayList<ObjSalao>();
-    private ArrayAdapter<ObjSalao> arrayAdapterSalao;
+    private List<ObjSenha> listSalao = new ArrayList<ObjSenha>();
+
+    private ArrayAdapter<ObjSenha> arrayAdapterSalao;
     private FirebaseAuth auth;
-    private TextView listarSalao,listarNumero;
+    private TextView listarSalao, senhaChamada;
+    private ListView listarNumero;
+    private Button somar;
     private FirebaseFirestore db;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
-    private String salaoSelecionado;
+    private String salaoSelecionado, numeroChamada,tmp;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private String userLogado = user.getUid();
 
@@ -40,34 +47,61 @@ public class SalaoSelecionado extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         Intent iin = getIntent();
         String nomeSalaoSelecionado = (String) iin.getSerializableExtra("Nome");
-        String chamadaSenha = (String) iin.getSerializableExtra("senhaChamada");
+        String idSalao = (String) iin.getSerializableExtra("Uid");
+        salaoSelecionado = idSalao;
 
+        somar = findViewById(R.id.mais);
         listarNumero = findViewById(R.id.listarNumero);
         listarSalao = findViewById(R.id.nomeSalao);
 
         TextView Uid = (TextView) findViewById(R.id.nomeSalao);
-        TextView senhaChamada = (TextView) findViewById(R.id.listarNumero);
 
         Uid.setText(nomeSalaoSelecionado);
-        senhaChamada.setText(chamadaSenha);
         iniciarFirebase();
-
-     /*    eventoDatabase(); */
+        eventoDatabase();
+        eventoClick();
     }
-    /*
+
+    private void eventoClick() {
+        somar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                ObjSenha senha = new ObjSenha();
+
+                int tmpInt = Integer.parseInt(tmp);
+
+                tmpInt++;
+
+                tmp = Integer.toString(tmpInt);
+
+                senha.setSenhaExibida(tmp);
+                referencia.child("Senha").child(salaoSelecionado).setValue(senha);
+
+                eventoDatabase();
+            }
+        });
+
+
+    }
+
+
     private void eventoDatabase() {
-        referencia.child("Salao").child(userLogado).child(salaoSelecionado).addValueEventListener(new ValueEventListener() {
+        referencia.child("Senha").child(salaoSelecionado).addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listSalao.clear();
                 for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
-                    ObjSalao s = objSnapshot.getValue(ObjSalao.class);
-
+                    tmp = objSnapshot.getValue(String.class);
+                    ObjSenha s = new ObjSenha();
+                    s.setSenhaExibida(tmp);
                     listSalao.add(s);
                 }
-                arrayAdapterSalao = new ArrayAdapter<ObjSalao>(SalaoSelecionado.this,
+                arrayAdapterSalao = new ArrayAdapter<ObjSenha>(SalaoSelecionado.this,
                         android.R.layout.simple_list_item_1, listSalao);
-                listarSalao.setAdapter(arrayAdapterSalao);
+                listarNumero.setAdapter(arrayAdapterSalao);
             }
 
             @Override
@@ -75,7 +109,7 @@ public class SalaoSelecionado extends AppCompatActivity {
 
             }
         });
-    }*/
+    }
 
 
     private void iniciarFirebase() {
@@ -86,4 +120,11 @@ public class SalaoSelecionado extends AppCompatActivity {
         referencia = firebaseDatabase.getReference();
     }
 
+
+    public void subSenha(View view) {
+
+
+    }
 }
+
+

@@ -54,7 +54,8 @@ public class SaloesProfissional extends AppCompatActivity {
                 ObjSalao itemSelecionado = arrayAdapterSalao.getItem(position);
 
                 Intent i = new Intent(SaloesProfissional.this, SalaoSelecionado.class);
-                i.putExtra("senhaChamada",itemSelecionado.getNumero().toString());
+                i.putExtra("Uid", itemSelecionado.getUid());
+                i.putExtra("senhaChamada",itemSelecionado.getNumero());
                 i.putExtra("Nome", itemSelecionado.toString());
                 startActivity(i);
             }
