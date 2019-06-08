@@ -4,11 +4,14 @@ import java.util.UUID;
 
 public class ObjSalao {
 
+
     private String nome,rua,bairro,cidade,numero,Uid;
+
 
     public ObjSalao() {
 
     }
+
 
     @Override
     public String toString() {

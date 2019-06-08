@@ -95,5 +95,20 @@ public class SaloesProfissional extends AppCompatActivity {
     }
 
 
+    public void onItemClick(View view) {
+
+        listarSalao.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ObjSalao itemSelecionado = arrayAdapterSalao.getItem(position);
+
+                Intent i = new Intent(SaloesProfissional.this, SalaoSelecionado.class);
+                i.putExtra("Uid", itemSelecionado.toString());
+                startActivity(i);
+
+
+            }
+        });
+    }
 }
 
