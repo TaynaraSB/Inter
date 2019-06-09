@@ -9,31 +9,52 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="CADASTRO"/>
+        android:layout_height="87dp"
+        android:hint="CADASTRO"
+        android:lineSpacingExtra="8sp"
+        android:text="CADASTRO"
+        android:textAlignment="center"
+        android:textColor="#F03A3A"
+        android:textSize="36sp"
+        android:typeface="sans" />
 
 
     <EditText
         android:id="@+id/editCadastroEmail"
-        android:hint="email"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="85dp"
+        android:hint="email" />
+
     <EditText
         android:id="@+id/editCadastroSenha"
-        android:hint="senha"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="96dp"
+        android:hint="senha" />
 
-    <Button
-        android:id="@+id/btnCadastroRegistrar"
-        android:text="Cadastrar"
-        android:onClick="criarUser"
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/btnCadastroVoltar"
-        android:text="Voltar"
+        android:layout_height="65dp" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/btnCadastroRegistrar2"
+            android:layout_width="211dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="criarUser"
+            android:text="Cadastrar" />
+
+        <Button
+            android:id="@+id/btnCadastroVoltar2"
+            android:layout_width="211dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Voltar" />
+    </LinearLayout>
 
 </LinearLayout>
