@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "290650615232",
+    "firebase_url": "https://inter-9513c.firebaseio.com/",
+    "project_id": "inter-9513c",
+    "storage_bucket": "inter-9513c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:290650615232:android:e4385e2591154261",
+        "android_client_info": {
+          "package_name": "com.br.opet.inter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "290650615232-gvbj673fs3hm298bfe2duqjf5ueru45o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.br.opet.inter",
+            "certificate_hash": "d4c31cb9cd23651b952549e4b19bc9e44e3c8c1e"
+          }
+        },
+        {
+          "client_id": "290650615232-m6qrjfsn7e0k8bf5ouu9coouvnt8j407.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-PxS9zf4SmFlTe7v1kc7bL-nKzuTzySI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "290650615232-m6qrjfsn7e0k8bf5ouu9coouvnt8j407.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
