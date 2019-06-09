@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,11 +43,24 @@ public class SaloesProfissional extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.saloesprofissional);
+        setContentView(R.layout.saloes_profissional);
         auth = FirebaseAuth.getInstance();
         iniciarFirebase();
         eventoDatabase();
+
         listarSalao = findViewById(R.id.listSalao);
+
+        listarSalao.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                ObjSalao itemSelecionado = arrayAdapterSalao.getItem(position);
+
+                referencia.child("Salao").child(userLogado).child(itemSelecionado.getUid()).removeValue();
+            alerta("Salao" + itemSelecionado.getNome()+"Deletado com sucesso!");
+
+                return false;
+            }
+        });
 
         listarSalao.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -94,20 +108,8 @@ public class SaloesProfissional extends AppCompatActivity {
         referencia = firebaseDatabase.getReference();
     }
 
-
-    public void onItemClick(View view) {
-
-        listarSalao.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ObjSalao itemSelecionado = arrayAdapterSalao.getItem(position);
-
-                Intent i = new Intent(SaloesProfissional.this, SalaoSelecionado.class);
-                i.putExtra("Uid", itemSelecionado.toString());
-                startActivity(i);
-
-
-            }
-        });
+    private void alerta(String msg) {
+        Toast.makeText(SaloesProfissional.this, msg, Toast.LENGTH_SHORT).show();
     }
+
 }

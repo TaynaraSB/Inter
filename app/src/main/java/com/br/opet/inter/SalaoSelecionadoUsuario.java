@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,7 +16,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +29,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SalaoSelecionado extends AppCompatActivity {
+public class SalaoSelecionadoUsuario extends AppCompatActivity {
 
 
     private List<ObjSenha> listSalao = new ArrayList<ObjSenha>();
@@ -40,10 +38,7 @@ public class SalaoSelecionado extends AppCompatActivity {
     private FirebaseAuth auth;
     private TextView listarSalao, senhaChamada;
     private ListView listarNumero;
-    private Button somar;
-    private Button diminuir;
     private Button voltar;
-    private Button resetar;
     private FirebaseFirestore db;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
@@ -56,7 +51,7 @@ public class SalaoSelecionado extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.salao_selecionado);
+        setContentView(R.layout.salao_selecionado_usuario);
         auth = FirebaseAuth.getInstance();
         Intent iin = getIntent();
 
@@ -68,10 +63,7 @@ public class SalaoSelecionado extends AppCompatActivity {
 
         imageSelector = findViewById(R.id.imageSelector);
         mStorage = FirebaseStorage.getInstance().getReference();
-        resetar = findViewById(R.id.reset);
         voltar = findViewById(R.id.voltar);
-        diminuir = findViewById(R.id.menos);
-        somar = findViewById(R.id.mais);
         listarNumero = findViewById(R.id.listarNumero);
         listarSalao = findViewById(R.id.nomeSalao);
 
@@ -87,72 +79,10 @@ public class SalaoSelecionado extends AppCompatActivity {
         voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SalaoSelecionado.this, MenuPrincipalProfissional.class);
+                Intent i = new Intent(SalaoSelecionadoUsuario.this, MenuPrincipalUsuario.class);
                 startActivity(i);
             }
         });
-
-        resetar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                ObjSenha senha = new ObjSenha();
-
-                int tmpInt = Integer.parseInt(tmp);
-
-                tmpInt = 0;
-
-                tmp = Integer.toString(tmpInt);
-
-                senha.setSenhaExibida(tmp);
-                referencia.child("Senha").child(salaoSelecionado).setValue(senha);
-
-                eventoDatabase();
-
-            }
-        });
-
-        diminuir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                ObjSenha senha = new ObjSenha();
-
-                int tmpInt = Integer.parseInt(tmp);
-
-                tmpInt--;
-
-                tmp = Integer.toString(tmpInt);
-
-                senha.setSenhaExibida(tmp);
-                referencia.child("Senha").child(salaoSelecionado).setValue(senha);
-
-                eventoDatabase();
-
-            }
-        });
-        somar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                ObjSenha senha = new ObjSenha();
-
-                int tmpInt = Integer.parseInt(tmp);
-
-                tmpInt++;
-
-                tmp = Integer.toString(tmpInt);
-
-                senha.setSenhaExibida(tmp);
-                referencia.child("Senha").child(salaoSelecionado).setValue(senha);
-
-                eventoDatabase();
-            }
-        });
-
-
-
     }
 
 
@@ -169,7 +99,7 @@ public class SalaoSelecionado extends AppCompatActivity {
                     s.setSenhaExibida(tmp);
                     listSalao.add(s);
                 }
-                arrayAdapterSalao = new ArrayAdapter<ObjSenha>(SalaoSelecionado.this,
+                arrayAdapterSalao = new ArrayAdapter<ObjSenha>(SalaoSelecionadoUsuario.this,
                         android.R.layout.simple_list_item_1, listSalao);
                 listarNumero.setAdapter(arrayAdapterSalao);
                 getImagemFirebase();
@@ -189,7 +119,7 @@ public class SalaoSelecionado extends AppCompatActivity {
     private void iniciarFirebase() {
 
         db = FirebaseFirestore.getInstance();
-        FirebaseApp.initializeApp(SalaoSelecionado.this);
+        FirebaseApp.initializeApp(SalaoSelecionadoUsuario.this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         referencia = firebaseDatabase.getReference();
     }

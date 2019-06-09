@@ -51,7 +51,7 @@ public class NovoSalao extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.novosalao);
+        setContentView(R.layout.novo_salao);
         FirebaseApp.initializeApp(NovoSalao.this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         referencia = firebaseDatabase.getReference();
@@ -88,7 +88,7 @@ public class NovoSalao extends AppCompatActivity {
 
         referencia.child("Senha").child(salao.getUid()).setValue(senhaExibida);
         referencia.child("Salao").child(userLogado).child(salao.getUid()).setValue(salao);
-
+        referencia.child("SalaoAll").child(salao.getUid()).setValue(salao);
         salvarImagemFirebase(salao.getUid());
 
 

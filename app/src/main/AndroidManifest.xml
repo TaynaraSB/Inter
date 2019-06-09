@@ -19,7 +19,9 @@
         <activity android:name=".NovoSalao"></activity>
         <activity android:name=".SaloesProfissional"></activity>
         <activity android:name=".SalaoSelecionado"></activity>
-
+        <activity android:name=".SalaoSelecionadoUsuario"></activity>
+        <activity android:name=".SaloesDisponiveisUsuario"></activity>
+        <activity android:name=".MenuPrincipalUsuario"></activity>
 
         <activity android:name=".ModoLogin">
             <intent-filter>

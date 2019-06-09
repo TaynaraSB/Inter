@@ -26,6 +26,8 @@ public class LoginProfissional extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         inicializarComponentes();
+        verificarLogin();
+
     }
 
 
@@ -38,9 +40,8 @@ public class LoginProfissional extends AppCompatActivity {
     }
 
     //-----------------VERIFICAR SE ESTÁ LOGADO---------------------------------------------------//
-    @Override
-    protected void onStart() {
-        super.onStart();
+
+    protected void verificarLogin() {
         FirebaseUser user = auth.getCurrentUser();
         if (user != null) {
             Toast.makeText(this, "Logado", Toast.LENGTH_SHORT).show();

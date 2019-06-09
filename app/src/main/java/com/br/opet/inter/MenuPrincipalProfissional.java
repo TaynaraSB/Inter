@@ -16,7 +16,7 @@ public class MenuPrincipalProfissional extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menuprofissional);
+        setContentView(R.layout.menu_profissional);
         auth = FirebaseAuth.getInstance();
     }
 

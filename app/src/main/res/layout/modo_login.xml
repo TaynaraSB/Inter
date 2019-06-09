@@ -5,12 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MenuPrincipalUsuario">
+    android:background="#5C5341"
+    tools:context=".ModoLogin">
 
 
     <Button
-        android:id="@+id/btnSair"
-        android:text="Sair"
+        android:id="@+id/btnProfissional"
+        android:onClick="profissional"
+        android:text="Profissional"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btnUsuario"
+        android:onClick="usuario"
+        android:text="Usuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
