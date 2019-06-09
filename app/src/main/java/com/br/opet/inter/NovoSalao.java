@@ -145,19 +145,17 @@ public class NovoSalao extends AppCompatActivity {
         }
 
 
-        
-
     }
 
-        public void salvarImagemFirebase(String id) {
-            FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
-            StorageReference userRef = mStorage.child("images/"+mUser.getEmail()+"/"+ id + ".png");
-            userRef.putFile(mSelected.get(0))
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+    public void salvarImagemFirebase(String id) {
+        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+        StorageReference userRef = mStorage.child("images/" + mUser.getEmail() + "/" + id + ".png");
+        userRef.putFile(mSelected.get(0))
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                        }
-                    });
-        }
+                    }
+                });
     }
+}

@@ -11,9 +11,11 @@
         android:id="@+id/editLoginEmail"
         android:hint="Login"
         android:layout_width="match_parent"
+        android:textSize="39sp"
         android:layout_height="wrap_content" />
     <EditText
         android:id="@+id/editLoginSenha"
+        android:textSize="39sp"
         android:hint="Login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

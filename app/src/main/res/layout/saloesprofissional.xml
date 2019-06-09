@@ -9,7 +9,6 @@
 
     <ListView
         android:id="@+id/listSalao"
-        android:onClick="onItemClick"
         android:layout_width="373dp"
         android:layout_height="679dp"
         android:layout_marginStart="8dp"

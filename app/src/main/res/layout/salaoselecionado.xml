@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".SalaoSelecionado">
+    <ImageView
+        android:id="@+id/imageSelector"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        />
 
 
         <TextView
@@ -13,18 +19,12 @@
             android:layout_width="match_parent"
             android:layout_height="112dp"></TextView>
 
-            <ListView
-            android:id="@+id/listarNumero"
-            android:layout_width="wrap_content"
-            android:layout_height="340dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ListView
+        android:id="@+id/listarNumero"
+        android:textSize="39sp"
+        android:layout_width="150dp"
+        android:layout_height="137dp"
+        android:layout_gravity="center"></ListView>
 
         <Button
             android:id="@+id/mais"
