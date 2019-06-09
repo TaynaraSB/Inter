@@ -144,7 +144,9 @@ public class NovoSalao extends AppCompatActivity {
             Picasso.get().load(mSelected.get(0)).into(imageSelector);
         }
 
+
         
+
     }
 
         public void salvarImagemFirebase(String id) {
