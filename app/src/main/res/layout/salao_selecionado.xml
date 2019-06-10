@@ -5,20 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#5C5341"
+    android:background="#918471"
     tools:context=".SalaoSelecionado">
+
     <ImageView
         android:id="@+id/imageSelector"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        />
+        android:layout_width="184dp"
+        android:layout_height="195dp"
+        android:layout_gravity="center" />
 
 
     <TextView
         android:id="@+id/nomeSalao"
         android:layout_width="match_parent"
-        android:layout_height="88dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textAlignment="center"
         android:textColor="#FF100202"
@@ -31,7 +31,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="143dp"
+        android:layout_height="112dp"
         android:orientation="horizontal">
 
         <Button
@@ -44,8 +44,9 @@
         <ListView
             android:id="@+id/listarNumero"
             android:layout_width="111dp"
-            android:layout_height="101dp"
+            android:layout_height="46dp"
             android:layout_gravity="right"
+            android:background="#F1EBEB"
             android:textAlignment="gravity"
             android:textSize="36sp">
 
@@ -65,10 +66,11 @@
         android:layout_width="match_parent"
         android:layout_height="53dp"
         android:text="Voltar" />
+
     <Button
         android:id="@+id/reset"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="51dp"
         android:text="Reset" />
 
 </LinearLayout>

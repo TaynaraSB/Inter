@@ -200,7 +200,7 @@ public class SalaoSelecionado extends AppCompatActivity {
 
     private void getImagemFirebase() {
         FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
-        StorageReference userRef = mStorage.child("images/").child(mUser.getEmail()).child(salaoSelecionado + ".png");
+        StorageReference userRef = mStorage.child("images/").child(salaoSelecionado + ".png");
         userRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {

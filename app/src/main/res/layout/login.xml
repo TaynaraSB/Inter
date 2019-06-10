@@ -21,17 +21,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="exemplo@gmail.com"
-        android:textColorHint="#FAF7F7"
-        android:textSize="29sp" />
+        android:textColor="#FDF7F7"
+        android:textColorHint="#FDF7F7"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/editLoginSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="********"
-        android:textColorHint="#FDF7F7"
         android:inputType="textPassword"
-        android:textSize="29sp" />
+        android:textColor="#FDF7F7"
+        android:textColorHint="#FDF7F7"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"

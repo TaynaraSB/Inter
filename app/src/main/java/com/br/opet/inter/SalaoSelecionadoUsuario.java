@@ -42,11 +42,10 @@ public class SalaoSelecionadoUsuario extends AppCompatActivity {
     private FirebaseFirestore db;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
-    private String salaoSelecionado, numeroChamada,tmp;
+    private String salaoSelecionado, numeroChamada, tmp;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private StorageReference mStorage;
     private ImageView imageSelector;
-    private String userLogado = user.getUid();
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +53,6 @@ public class SalaoSelecionadoUsuario extends AppCompatActivity {
         setContentView(R.layout.salao_selecionado_usuario);
         auth = FirebaseAuth.getInstance();
         Intent iin = getIntent();
-
 
 
         String nomeSalaoSelecionado = (String) iin.getSerializableExtra("Nome");
@@ -115,7 +113,6 @@ public class SalaoSelecionadoUsuario extends AppCompatActivity {
     }
 
 
-
     private void iniciarFirebase() {
 
         db = FirebaseFirestore.getInstance();
@@ -125,20 +122,15 @@ public class SalaoSelecionadoUsuario extends AppCompatActivity {
     }
 
 
-
-
-
     private void getImagemFirebase() {
         FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
-        StorageReference userRef = mStorage.child("images/").child(mUser.getEmail()).child(salaoSelecionado + ".png");
+        StorageReference userRef = mStorage.child("images/").child(salaoSelecionado + ".png");
         userRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.get().load(uri).into(imageSelector);
             }
         });
-
-
     }
 }
 

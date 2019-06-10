@@ -5,12 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#5C5341"
     tools:context=".MenuPrincipalProfissional">
 
+    <ImageView
+        android:layout_width="138dp"
+        android:layout_height="143dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="60px"
+        android:src="@drawable/logo" />
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Menu Principal" />
+        android:layout_width="398dp"
+        android:layout_height="51dp"
+        android:gravity="center"
+        android:hint="Bem vindo !       "
+        android:textColor="#FDF7F7"
+        android:textColorHint="#FDF7F7"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="99dp"
+        android:orientation="vertical"></LinearLayout>
 
     <Button
         android:id="@+id/btnMeusSaloes"

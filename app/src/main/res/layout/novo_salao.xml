@@ -10,41 +10,48 @@
 
     <ImageView
         android:id="@+id/imageSelector"
-        android:onClick="selectImageFromDisk"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
-        />
+        android:background="#70FDFAFA"
+        android:contextClickable="true"
+        android:hint="FOTO"
+        android:onClick="selectImageFromDisk" />
 
     <EditText
         android:id="@+id/editNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nome" />
+        android:hint="Nome"
+        android:textColorHint="#70FDFAFA"/>
 
     <EditText
         android:id="@+id/editRua"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Rua" />
+        android:hint="Rua"
+        android:textColorHint="#70FDFAFA"/>
 
     <EditText
         android:id="@+id/editBairro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Bairro" />
+        android:hint="Bairro"
+        android:textColorHint="#70FDFAFA"/>
 
     <EditText
         android:id="@+id/editCidade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Cidade" />
+        android:hint="Cidade"
+        android:textColorHint="#70FDFAFA"/>
 
     <EditText
         android:id="@+id/editNumero"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Numero" />
+        android:hint="Numero"
+        android:textColorHint="#70FDFAFA"/>
 
     <Button
         android:id="@+id/btnNovoSalao"
