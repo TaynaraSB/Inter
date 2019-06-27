@@ -20,7 +20,7 @@
         android:layout_width="398dp"
         android:layout_height="51dp"
         android:gravity="center"
-        android:hint="Bem vindo !       "
+        android:hint="See Your Password !       "
         android:textColor="#FDF7F7"
         android:textColorHint="#FDF7F7"
         android:textSize="20sp" />

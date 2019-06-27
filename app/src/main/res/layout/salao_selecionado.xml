@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#918471"
+    android:background="#5C5341"
     tools:context=".SalaoSelecionado">
 
     <ImageView
         android:id="@+id/imageSelector"
         android:layout_width="184dp"
         android:layout_height="195dp"
+        android:background="#70FDFAFA"
         android:layout_gravity="center" />
 
 

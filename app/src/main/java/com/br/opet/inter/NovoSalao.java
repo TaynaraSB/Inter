@@ -83,6 +83,7 @@ public class NovoSalao extends AppCompatActivity {
         salao.setNumero(editNumero.getText().toString());
         salao.setCidade(editCidade.getText().toString());
 
+
         ObjSenha senhaExibida = new ObjSenha();
         senhaExibida.setSenhaExibida("0");
 
@@ -91,6 +92,9 @@ public class NovoSalao extends AppCompatActivity {
         referencia.child("SalaoAll").child(salao.getUid()).setValue(salao);
         salvarImagemFirebase(salao.getUid());
 
+        alerta("Salao cadastrado com sucesso!");
+        Intent i = new Intent(NovoSalao.this, MenuPrincipalProfissional.class);
+        startActivity(i);
 
     }
 

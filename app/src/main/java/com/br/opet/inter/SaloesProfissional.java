@@ -56,7 +56,9 @@ public class SaloesProfissional extends AppCompatActivity {
                 ObjSalao itemSelecionado = arrayAdapterSalao.getItem(position);
 
                 referencia.child("Salao").child(userLogado).child(itemSelecionado.getUid()).removeValue();
-            alerta("Salao" + itemSelecionado.getNome()+"Deletado com sucesso!");
+                referencia.child("SalaoAll").child(itemSelecionado.getUid()).removeValue();
+
+                alerta("Salao" + itemSelecionado.getNome()+"Deletado com sucesso!");
 
                 return false;
             }
